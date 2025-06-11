@@ -1,4 +1,4 @@
-import { mutation, query } from "./_generated/server";
+import { mutation, query, internalMutation } from "./_generated/server";
 import { v } from "convex/values";
 import { ConvexError } from "convex/values";
 import { internal } from "./_generated/api";
@@ -18,9 +18,9 @@ export const createPayment = mutation({
       splitProcessed: false,
     });
 
-    // Trigger payment splitting if payment succeeded
+    // Process payment split immediately for now
     if (args.status === "succeeded") {
-      await ctx.scheduler.runAfter(0, internal.payments.processPaymentSplit, {
+      await ctx.runMutation(internal.payments.processPaymentSplit, {
         paymentId,
       });
     }
@@ -50,7 +50,7 @@ export const updatePaymentStatus = mutation({
 
     // Trigger payment splitting if payment succeeded and not already processed
     if (status === "succeeded" && !payment.splitProcessed) {
-      await ctx.scheduler.runAfter(0, internal.payments.processPaymentSplit, {
+      await ctx.runMutation(internal.payments.processPaymentSplit, {
         paymentId: payment._id,
       });
     }
@@ -59,7 +59,7 @@ export const updatePaymentStatus = mutation({
   },
 });
 
-export const processPaymentSplit = mutation({
+export const processPaymentSplit = internalMutation({
   args: {
     paymentId: v.id("payments"),
   },

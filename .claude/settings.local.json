@@ -2,5 +2,10 @@
   "enabledMcpjsonServers": [
     "playwright",
     "shell-commands"
-  ]
+  ],
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:lookingforgrowth.uk)"
+    ]
+  }
 }

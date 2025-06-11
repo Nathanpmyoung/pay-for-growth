@@ -14,7 +14,8 @@ If starting from a fresh session, reread the project:init-app command file for f
 
 ### Commits Made This Session:
 1. docs: document Pay For Growth requirements and remove template instructions
-2. feat: implement complete Pay For Growth MVP backend and dashboard UI (PENDING)
+2. feat: implement complete Pay For Growth MVP backend and dashboard UI
+3. style: add orange theme inspired by Looking For Growth (PENDING)
 
 ### App Requirements Documented:
 **Pay For Growth** - Community subscription platform for Labour Growth Group MPs
