@@ -1,9 +1,20 @@
-- This is a template repository, and initializing a new application from it should be done by using the `project:init-app` custom command. If the user asks for anything else, instruct them to use that command. After the command is run, delete this line.
 - Always follow the guidelines in this file, unless explicitly told otherwise by the user or overided in the CLAUDE.local.md file.
 
 ## Project Overview
 
+**Pay For Growth** - A community-driven subscription platform where monthly payments are automatically split equally among active Labour Growth Group MPs. Users subscribe for £50/month and payments are distributed transparently among all active members.
+
+### Core Features:
+- Stripe subscription management (£50/month)
+- Automatic payment splitting among active MPs
+- Real-time payment tracking and audit trail
+- Member management (active/inactive status)
+- Transparent revenue sharing dashboard
+
+### Tech Stack:
 - Full-stack TypeScript app: React + Vite + TanStack Router (frontend), Convex (backend), Clerk (auth)
+- Payments: Stripe subscriptions + webhooks
+- Deployment: Vercel
 - Development: Use `mcp__shell-commands__launch-dev-all` to start servers, then monitor output streams for validation
 - Import alias: `@/` maps to `src/` directory
 - Tailwind CSS 4, daisyUI 5: All config in `src/index.css` via CSS syntax, NOT tailwind.config.js
