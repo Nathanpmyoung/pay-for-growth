@@ -6,17 +6,20 @@
     dark --prefersdark;
 }
 
-/* Pay For Growth orange theme */
+/* Pay For Growth - Looking For Growth inspired theme */
 [data-theme="light"] {
-  --primary: 249 115 22;
+  --primary: 20 184 166;        /* Teal/turquoise */
   --primary-content: 255 255 255;
-  --secondary: 30 64 175;
-  --accent: 22 163 74;
-  --neutral: 55 65 81;
-  --base-100: 255 255 255;
-  --base-200: 248 250 252;
-  --base-300: 226 232 240;
-  --base-content: 31 41 55;
+  --secondary: 249 115 22;      /* Orange accent */
+  --secondary-content: 255 255 255;
+  --accent: 251 191 36;         /* Yellow accent */
+  --accent-content: 0 0 0;
+  --neutral: 0 0 0;             /* Black text */
+  --neutral-content: 255 255 255;
+  --base-100: 254 252 232;      /* Cream/beige background */
+  --base-200: 253 246 178;      /* Slightly darker cream */
+  --base-300: 252 211 77;       /* Light yellow */
+  --base-content: 0 0 0;        /* Black text on cream */
 }
 
 /* Custom styling inspired by Looking For Growth */
@@ -42,12 +45,24 @@
   }
 
   .btn-primary {
+    background: linear-gradient(135deg, rgb(20 184 166) 0%, rgb(15 118 110) 100%);
+    border: none;
+    box-shadow: 0 4px 14px 0 rgba(20, 184, 166, 0.3);
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(135deg, rgb(15 118 110) 0%, rgb(13 148 136) 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px 0 rgba(20, 184, 166, 0.4);
+  }
+
+  .btn-secondary {
     background: linear-gradient(135deg, rgb(249 115 22) 0%, rgb(234 88 12) 100%);
     border: none;
     box-shadow: 0 4px 14px 0 rgba(249, 115, 22, 0.3);
   }
   
-  .btn-primary:hover {
+  .btn-secondary:hover {
     background: linear-gradient(135deg, rgb(234 88 12) 0%, rgb(220 38 38) 100%);
     transform: translateY(-1px);
     box-shadow: 0 6px 20px 0 rgba(249, 115, 22, 0.4);
