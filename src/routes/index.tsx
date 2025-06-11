@@ -1,6 +1,6 @@
 import { SignInButton } from "@clerk/clerk-react";
 import { convexQuery } from "@convex-dev/react-query";
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { Authenticated, Unauthenticated } from "convex/react";
 import { Users, DollarSign, TrendingUp, Star, Award, Trophy } from "lucide-react";
@@ -12,11 +12,13 @@ const userEarningsQueryOptions = convexQuery(api.payments.getCurrentUserEarnings
 
 export const Route = createFileRoute("/")({
   loader: async ({ context: { queryClient } }) => {
-    await Promise.all([
-      queryClient.ensureQueryData(currentUserQueryOptions),
-      queryClient.ensureQueryData(activeMPsQueryOptions),
-      queryClient.ensureQueryData(userEarningsQueryOptions),
-    ]);
+    // Only preload data that doesn't require authentication
+    try {
+      await queryClient.ensureQueryData(activeMPsQueryOptions);
+    } catch (error) {
+      console.warn("Failed to preload data:", error);
+      // Continue loading the page even if preloading fails
+    }
   },
   component: HomePage,
 });
@@ -118,12 +120,38 @@ function HomePage() {
 }
 
 function Dashboard() {
-  const { data: currentUser } = useSuspenseQuery(currentUserQueryOptions);
-  const { data: activeMPs } = useSuspenseQuery(activeMPsQueryOptions);
-  const { data: earnings } = useSuspenseQuery(userEarningsQueryOptions);
+  const { data: currentUser, isLoading: userLoading, error: userError } = useQuery(currentUserQueryOptions);
+  const { data: activeMPs = [], isLoading: mpsLoading } = useQuery(activeMPsQueryOptions);
+  const { data: earnings, isLoading: earningsLoading } = useQuery(userEarningsQueryOptions);
+
+  if (userLoading || mpsLoading || earningsLoading) {
+    return (
+      <div className="max-w-4xl mx-auto text-center py-12">
+        <div className="loading loading-spinner loading-lg"></div>
+        <p className="mt-4">Loading your dashboard...</p>
+      </div>
+    );
+  }
+
+  if (userError) {
+    return (
+      <div className="max-w-4xl mx-auto text-center py-12">
+        <TrendingUp className="w-16 h-16 text-primary mx-auto mb-4" />
+        <h2 className="text-2xl font-bold mb-4">Welcome to Pay For Growth</h2>
+        <div className="alert alert-warning">
+          <span>Having trouble loading your data. Please try refreshing the page.</span>
+        </div>
+      </div>
+    );
+  }
 
   if (!currentUser) {
-    return <div>Loading...</div>;
+    return (
+      <div className="max-w-4xl mx-auto text-center py-12">
+        <div className="loading loading-spinner loading-lg"></div>
+        <p className="mt-4">Setting up your account...</p>
+      </div>
+    );
   }
 
   const formatCurrency = (amountInPence: number) => {
@@ -268,3 +296,4 @@ function Dashboard() {
     </div>
   );
 }
+

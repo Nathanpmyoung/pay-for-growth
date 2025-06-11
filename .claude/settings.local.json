@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:lookingforgrowth.uk)",
-      "Bash(pnpm build:*)"
+      "Bash(pnpm build:*)",
+      "Bash(git push:*)"
     ]
   },
   "enabledMcpjsonServers": [
