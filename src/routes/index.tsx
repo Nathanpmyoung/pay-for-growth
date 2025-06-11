@@ -3,7 +3,7 @@ import { convexQuery } from "@convex-dev/react-query";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { Authenticated, Unauthenticated } from "convex/react";
-import { Zap, Users, DollarSign, TrendingUp, Crown, Star, Award, Trophy } from "lucide-react";
+import { Users, DollarSign, TrendingUp, Star, Award, Trophy } from "lucide-react";
 import { api } from "../../convex/_generated/api";
 
 const currentUserQueryOptions = convexQuery(api.users.getCurrentUser, {});
@@ -140,7 +140,7 @@ function Dashboard() {
         
         {currentUser.isMP ? (
           <div className="alert alert-success mb-6">
-            <Crown className="w-5 h-5" />
+            <TrendingUp className="w-5 h-5" />
             <span>You're registered as a Labour Growth Group MP</span>
           </div>
         ) : (
@@ -238,7 +238,7 @@ function Dashboard() {
               ) : (
                 activeMPs.map((mp) => (
                   <div key={mp._id} className="flex items-center gap-3 p-2 bg-base-100 rounded">
-                    <Crown className="w-4 h-4 text-primary" />
+                    <TrendingUp className="w-4 h-4 text-primary" />
                     <span>{mp.name}</span>
                   </div>
                 ))

@@ -1,11 +1,12 @@
 {
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:lookingforgrowth.uk)",
+      "Bash(pnpm build:*)"
+    ]
+  },
   "enabledMcpjsonServers": [
     "playwright",
     "shell-commands"
-  ],
-  "permissions": {
-    "allow": [
-      "WebFetch(domain:lookingforgrowth.uk)"
-    ]
-  }
+  ]
 }
