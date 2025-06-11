@@ -6,20 +6,29 @@
     dark --prefersdark;
 }
 
-/* Pay For Growth - Looking For Growth inspired theme */
+/* Pay For Growth - Exact Looking For Growth colors */
+:root {
+  --brand-milky-white: oklch(0.9796 0.0158 73.68);
+  --brand-dark-text: oklch(0.145 0 0);
+  --brand-ocean-blue: oklch(0.7855 0.0802 189.58);
+  --brand-black: rgb(0, 0, 0);
+  --brand-white: rgb(255, 255, 255);
+  --brand-flashy-orange: oklch(0.6743 0.2165 38.89);
+}
+
 [data-theme="light"] {
-  --primary: 20 184 166;        /* Teal/turquoise */
+  --primary: 0.7855 0.0802 189.58;        /* Ocean blue */
   --primary-content: 255 255 255;
-  --secondary: 249 115 22;      /* Orange accent */
+  --secondary: 0.6743 0.2165 38.89;       /* Flashy orange */
   --secondary-content: 255 255 255;
-  --accent: 251 191 36;         /* Yellow accent */
-  --accent-content: 0 0 0;
-  --neutral: 0 0 0;             /* Black text */
+  --accent: 0.6743 0.2165 38.89;          /* Flashy orange */
+  --accent-content: 255 255 255;
+  --neutral: 0.145 0 0;                   /* Dark text */
   --neutral-content: 255 255 255;
-  --base-100: 254 252 232;      /* Cream/beige background */
-  --base-200: 253 246 178;      /* Slightly darker cream */
-  --base-300: 252 211 77;       /* Light yellow */
-  --base-content: 0 0 0;        /* Black text on cream */
+  --base-100: 0.9796 0.0158 73.68;        /* Milky white background */
+  --base-200: 0.95 0.02 73.68;            /* Slightly darker milky white */
+  --base-300: 0.92 0.03 73.68;            /* Even darker milky white */
+  --base-content: 0.145 0 0;              /* Dark text */
 }
 
 /* Custom styling inspired by Looking For Growth */
@@ -27,6 +36,8 @@
   body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
+    background-color: var(--brand-milky-white);
+    color: var(--brand-dark-text);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -45,26 +56,54 @@
   }
 
   .btn-primary {
-    background: linear-gradient(135deg, rgb(20 184 166) 0%, rgb(15 118 110) 100%);
-    border: none;
-    box-shadow: 0 4px 14px 0 rgba(20, 184, 166, 0.3);
+    background-color: var(--brand-ocean-blue);
+    color: var(--brand-white);
+    border: 2px solid var(--brand-ocean-blue);
+    font-weight: 600;
   }
   
   .btn-primary:hover {
-    background: linear-gradient(135deg, rgb(15 118 110) 0%, rgb(13 148 136) 100%);
+    background-color: var(--brand-flashy-orange);
+    border-color: var(--brand-flashy-orange);
+    color: var(--brand-white);
     transform: translateY(-1px);
-    box-shadow: 0 6px 20px 0 rgba(20, 184, 166, 0.4);
   }
 
-  .btn-secondary {
-    background: linear-gradient(135deg, rgb(249 115 22) 0%, rgb(234 88 12) 100%);
-    border: none;
-    box-shadow: 0 4px 14px 0 rgba(249, 115, 22, 0.3);
+  .btn-secondary, .btn-accent {
+    background-color: var(--brand-black);
+    color: var(--brand-white);
+    border: 2px solid var(--brand-flashy-orange);
+    font-weight: 600;
   }
   
-  .btn-secondary:hover {
-    background: linear-gradient(135deg, rgb(234 88 12) 0%, rgb(220 38 38) 100%);
+  .btn-secondary:hover, .btn-accent:hover {
+    background-color: var(--brand-flashy-orange);
+    border-color: var(--brand-flashy-orange);
+    color: var(--brand-white);
     transform: translateY(-1px);
-    box-shadow: 0 6px 20px 0 rgba(249, 115, 22, 0.4);
+  }
+
+  /* Top bar styling */
+  .top-bar {
+    background-color: var(--brand-ocean-blue);
+    border-bottom: 3px solid var(--brand-black);
+    color: var(--brand-white);
+  }
+
+  .join-us-btn {
+    background-color: var(--brand-flashy-orange);
+    color: var(--brand-white);
+    border: 2px solid var(--brand-flashy-orange);
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .join-us-btn:hover {
+    background-color: var(--brand-black);
+    border-color: var(--brand-flashy-orange);
+    color: var(--brand-white);
   }
 }

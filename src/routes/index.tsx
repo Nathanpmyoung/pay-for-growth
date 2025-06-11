@@ -25,10 +25,10 @@ function HomePage() {
   return (
     <div className="text-center">
       <div className="not-prose flex justify-center mb-4">
-        <Crown className="w-16 h-16 text-primary" />
+        <TrendingUp className="w-16 h-16 text-primary" />
       </div>
       <h1>Pay For Growth</h1>
-      <p className="text-lg opacity-80 mb-8">Supporting Labour Growth Group MPs through community subscriptions</p>
+      <p className="text-lg opacity-80 mb-8">Pay money directly to MPs who support growth</p>
 
       <Unauthenticated>
         <div className="max-w-4xl mx-auto">
